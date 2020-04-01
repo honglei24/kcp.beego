@@ -1,0 +1,12 @@
+/.dapper
+/bin
+/dist
+/build
+*.swp
+/.trash-cache
+/trash.lock
+/.idea
+*.pyc
+__pycache__
+*.pytest_cache
+.vscode/
