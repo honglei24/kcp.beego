@@ -1,10 +1,29 @@
 package models
 
+type UserStatus int
+
+const (
+	Normal UserStatus=iota
+	Deleted
+	Freeze
+)
 type User struct {
-	Id          int
-	Name        string
-	//Profile     *Profile   `orm:"rel(one)"` // OneToOne relation
-	//Post        []*Post `orm:"reverse(many)"` // 设置一对多的反向关系
+	Id				int
+	RoleId			int
+	Username    	string
+	Password     	string
+	Status 			UserStatus
+}
+
+type Cluster struct {
+	Id          	int
+	UserId         	int
+	Version			string
+	KubeConfig		string
+	Shared			int
+	CapacityCpu		int
+	CapacityMem		int64
+	Status 			string
 }
 
 //type Profile struct {

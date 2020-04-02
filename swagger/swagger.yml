@@ -1,0 +1,96 @@
+swagger: "2.0"
+info:
+  title: kcp API
+  description: kubernetes control platform APIs.
+  version: 1.0.0
+  contact:
+    email: honglei
+basePath: /v1
+paths:
+  /user/:
+    post:
+      tags:
+      - user
+      description: get user info by id
+      operationId: UserController.create user
+      parameters:
+      - in: body
+        name: Id
+        description: user id
+        schema:
+          format: int64
+          type: integer
+        type: integer
+        format: int64
+      - in: body
+        name: RoleId
+        description: role id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        type: integer
+        format: int64
+      - in: body
+        name: Username
+        description: user name
+        required: true
+        schema:
+          type: string
+        type: string
+      - in: body
+        name: Password
+        description: password
+        required: true
+        schema:
+          type: string
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Invalid id supplied
+  /user/{id}:
+    get:
+      tags:
+      - user
+      description: get user info by id
+      operationId: UserController.get user
+      parameters:
+      - in: path
+        name: id
+        description: user id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: User not found
+definitions:
+  models.User:
+    title: User
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      Password:
+        type: string
+      RoleId:
+        type: integer
+        format: int64
+      Status:
+        $ref: '#/definitions/models.UserStatus'
+      Username:
+        type: string
+  models.UserStatus:
+    title: UserStatus
+    format: int64
+    type: integer

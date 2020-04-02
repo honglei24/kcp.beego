@@ -25,10 +25,9 @@ func initDB() {
 	orm.RegisterDataBase(dbAlias, "mysql", dbUser+":"+dbPwd+"@tcp("+dbHost+":"+dbPort+")/"+dbName+"?"+dbCharset, 30)
 
 	// register model
+	// TODO
 	orm.RegisterModel(new(models.User))
-	//orm.RegisterModel(new(models.Post))
-	//orm.RegisterModel(new(models.Profile))
-	//orm.RegisterModel(new(models.Tag))
+	orm.RegisterModel(new(models.Cluster))
 
 	// 如果是开发模式， 则显示命令信息
 	isDev := (beego.AppConfig.String("runmode") == "dev")
