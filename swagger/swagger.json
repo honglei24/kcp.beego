@@ -10,13 +10,991 @@
     },
     "basePath": "/v1",
     "paths": {
+        "/cluster/": {
+            "get": {
+                "tags": [
+                    "cluster"
+                ],
+                "description": "get cluster list",
+                "operationId": "ClusterController.list cluster",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "cluster"
+                ],
+                "description": "get cluster info by id",
+                "operationId": "ClusterController.create cluster",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "ClusterId",
+                        "description": "cluster id",
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "RoleId",
+                        "description": "role id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Username",
+                        "description": "cluster name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Password",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    }
+                }
+            }
+        },
+        "/cluster/{id}": {
+            "get": {
+                "tags": [
+                    "cluster"
+                ],
+                "description": "get cluster info by id",
+                "operationId": "ClusterController.get cluster",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "cluster_id",
+                        "description": "cluster id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "cluster"
+                ],
+                "description": "get cluster info by id",
+                "operationId": "ClusterController.update cluster",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Id",
+                        "description": "cluster id",
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "RoleId",
+                        "description": "role id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Username",
+                        "description": "cluster name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Password",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "cluster"
+                ],
+                "description": "get cluster info by id",
+                "operationId": "ClusterController.delete cluster",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "cluster id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/right/": {
+            "get": {
+                "tags": [
+                    "right"
+                ],
+                "description": "get right list",
+                "operationId": "RightController.list right",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Right"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "right"
+                ],
+                "description": "get right info by id",
+                "operationId": "RightController.create right",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "ClusterId",
+                        "description": "right id",
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "RoleId",
+                        "description": "role id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Username",
+                        "description": "right name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Password",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Right"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    }
+                }
+            }
+        },
+        "/right/{id}": {
+            "get": {
+                "tags": [
+                    "right"
+                ],
+                "description": "get right info by id",
+                "operationId": "RightController.get right",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "right_id",
+                        "description": "right id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Right"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "right"
+                ],
+                "description": "get right info by id",
+                "operationId": "RightController.update right",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Id",
+                        "description": "right id",
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "RoleId",
+                        "description": "role id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Username",
+                        "description": "right name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Password",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Right"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "right"
+                ],
+                "description": "get right info by id",
+                "operationId": "RightController.delete right",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "right id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Right"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/role/": {
+            "get": {
+                "tags": [
+                    "role"
+                ],
+                "description": "get role list",
+                "operationId": "RoleController.list role",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Role"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "role"
+                ],
+                "description": "get role info by id",
+                "operationId": "RoleController.create role",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "ClusterId",
+                        "description": "role id",
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "RoleId",
+                        "description": "role id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Username",
+                        "description": "role name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Password",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Role"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    }
+                }
+            }
+        },
+        "/role/{id}": {
+            "get": {
+                "tags": [
+                    "role"
+                ],
+                "description": "get role info by id",
+                "operationId": "RoleController.get role",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "role_id",
+                        "description": "role id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Role"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "role"
+                ],
+                "description": "get role info by id",
+                "operationId": "RoleController.update role",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Id",
+                        "description": "role id",
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "RoleId",
+                        "description": "role id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Username",
+                        "description": "role name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Password",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Role"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "role"
+                ],
+                "description": "get role info by id",
+                "operationId": "RoleController.delete role",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "role id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Role"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/roleRight/": {
+            "get": {
+                "tags": [
+                    "roleRight"
+                ],
+                "description": "get roleRight list",
+                "operationId": "RoleRightController.list roleRight",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.RoleRight"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "roleRight"
+                ],
+                "description": "get roleRight info by id",
+                "operationId": "RoleRightController.create roleRight",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "ClusterId",
+                        "description": "roleRight id",
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "RoleId",
+                        "description": "role id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Username",
+                        "description": "roleRight name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Password",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.RoleRight"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    }
+                }
+            }
+        },
+        "/roleRight/{id}": {
+            "get": {
+                "tags": [
+                    "roleRight"
+                ],
+                "description": "get roleRight info by id",
+                "operationId": "RoleRightController.get roleRight",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "roleRight_id",
+                        "description": "roleRight id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.RoleRight"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "roleRight"
+                ],
+                "description": "get roleRight info by id",
+                "operationId": "RoleRightController.update roleRight",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Id",
+                        "description": "roleRight id",
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "RoleId",
+                        "description": "role id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Username",
+                        "description": "roleRight name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Password",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.RoleRight"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "roleRight"
+                ],
+                "description": "get roleRight info by id",
+                "operationId": "RoleRightController.delete roleRight",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "roleRight id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.RoleRight"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
         "/user/": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "get user list",
+                "operationId": "UserController.list user",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "create user",
+                "operationId": "UserController.create user",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "RoleId",
+                        "description": "role id",
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "username",
+                        "description": "user name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "password",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "mobile",
+                        "description": "mobile",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "email",
+                        "description": "email",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "get user info by id",
+                "operationId": "UserController.get user",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "user id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "user"
                 ],
                 "description": "get user info by id",
-                "operationId": "UserController.create user",
+                "operationId": "UserController.update user",
                 "parameters": [
                     {
                         "in": "body",
@@ -71,17 +1049,18 @@
                     },
                     "400": {
                         "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
                     }
                 }
-            }
-        },
-        "/user/{id}": {
-            "get": {
+            },
+            "delete": {
                 "tags": [
                     "user"
                 ],
                 "description": "get user info by id",
-                "operationId": "UserController.get user",
+                "operationId": "UserController.delete user",
                 "parameters": [
                     {
                         "in": "path",
@@ -109,13 +1088,160 @@
         }
     },
     "definitions": {
+        "models.Cluster": {
+            "title": "Cluster",
+            "type": "object",
+            "properties": {
+                "CapacityCpu": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CapacityMem": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ClusterId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CreateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "KubeConfig": {
+                    "type": "string"
+                },
+                "Shared": {
+                    "type": "boolean"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "UpdateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "UserId": {
+                    "$ref": "#/definitions/models.User"
+                },
+                "Version": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Right": {
+            "title": "Right",
+            "type": "object",
+            "properties": {
+                "CreateId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CreateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Detail": {
+                    "type": "string"
+                },
+                "RightId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "RightName": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "UpdateId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "UpdateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                }
+            }
+        },
+        "models.Role": {
+            "title": "Role",
+            "type": "object",
+            "properties": {
+                "CreateId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CreateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Detail": {
+                    "type": "string"
+                },
+                "RoleId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "RoleName": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "UpdateId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "UpdateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                }
+            }
+        },
+        "models.RoleRight": {
+            "title": "RoleRight",
+            "type": "object",
+            "properties": {
+                "CreateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "RightId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "RoleId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "UpdateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                }
+            }
+        },
         "models.User": {
             "title": "User",
             "type": "object",
             "properties": {
-                "Id": {
-                    "type": "integer",
-                    "format": "int64"
+                "Cluster": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Cluster"
+                    }
+                },
+                "CreateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "Mobile": {
+                    "type": "string"
                 },
                 "Password": {
                     "type": "string"
@@ -126,6 +1252,14 @@
                 },
                 "Status": {
                     "$ref": "#/definitions/models.UserStatus"
+                },
+                "UpdateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "UserId": {
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "Username": {
                     "type": "string"

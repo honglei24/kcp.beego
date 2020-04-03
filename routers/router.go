@@ -13,17 +13,30 @@ import (
 func init() {
 	ns :=
 		beego.NewNamespace("/v1",
+			//beego.NSBefore(auth),
 			beego.NSNamespace("/user",
 				beego.NSInclude(
 					&controllers.UserController{},
 				),
-				//beego.NSGet("/:id", func(ctx *context.Context) {
-				//	ctx.Output.Body([]byte("shopinfo"))
-				//}),
 			),
 			beego.NSNamespace("/cluster",
 				beego.NSInclude(
 					&controllers.ClusterController{},
+				),
+			),
+			beego.NSNamespace("/role",
+				beego.NSInclude(
+					&controllers.RoleController{},
+				),
+			),
+			beego.NSNamespace("/right",
+				beego.NSInclude(
+					&controllers.RightController{},
+				),
+			),
+			beego.NSNamespace("/roleRight",
+				beego.NSInclude(
+					&controllers.RoleRightController{},
 				),
 			),
 		)

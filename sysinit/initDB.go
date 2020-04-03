@@ -20,19 +20,27 @@ func initDB() {
 	dbHost := beego.AppConfig.String("db_host")
 	dbPort := beego.AppConfig.String("db_port")
 	dbCharset := beego.AppConfig.String("db_charset")
+	maxIdle, err := beego.AppConfig.Int("max_idle")
+	if err != nil {
+		logs.Error("max_idle must be an integer.")
+	}
+	maxConn, err := beego.AppConfig.Int("max_conn")
+	if err != nil {
+		logs.Error("max_conn must be an integer.")
+	}
 
 	// set default database
-	orm.RegisterDataBase(dbAlias, "mysql", dbUser+":"+dbPwd+"@tcp("+dbHost+":"+dbPort+")/"+dbName+"?"+dbCharset, 30)
+	orm.RegisterDataBase(dbAlias, "mysql", dbUser+":"+dbPwd+"@tcp("+dbHost+":"+dbPort+")/"+dbName+"?"+dbCharset, maxIdle, maxConn)
 
 	// register model
 	// TODO
-	orm.RegisterModel(new(models.User))
-	orm.RegisterModel(new(models.Cluster))
+	orm.RegisterModel(new(models.User), new(models.Cluster), new(models.Role), new(models.Right), new(models.RoleRight))
 
 	// 如果是开发模式， 则显示命令信息
 	isDev := (beego.AppConfig.String("runmode") == "dev")
 	// create table
-	err := orm.RunSyncdb("default", false, isDev)
+	err = orm.RunSyncdb("default", false, isDev)
+
 	if err != nil {
 		logs.Informational("[orm] Create table err : ", err)
 	}
