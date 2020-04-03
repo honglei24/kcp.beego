@@ -11,4 +11,7 @@
 
 下载代码到$GOPATH/src/目录
 # go run main.go
+
+通过http://127.0.0.1:8080/swagger/可以查看接口文档
 ```
+
